@@ -20,8 +20,8 @@ weatherApp.controller('weatherController', function ($scope, $http) {
         $scope.finalData = [];
         for(i=0;i<$scope.cityNameList.length;i++){
             $scope.city = $scope.cityNameList[i];
-            $http.get('http://api.openweathermap.org/data/2.5/forecast?appid=41759783c8ef8257cd229fff2283fe50&q='+$scope.city+',us')
-                .then(function(response)
+            $http.get('http://api.openweathermap.org/data/2.5/forecast?appid=41759783c8ef8257cd229fff2283fe50&q='+$scope.city+',us').then(
+                function (response)
                 {
                     $scope.lat = response.data.city.coord.lat;
                     $scope.lon = response.data.city.coord.lon;
@@ -37,6 +37,9 @@ weatherApp.controller('weatherController', function ($scope, $http) {
                     data["tempList"] = $scope.temperatureList;
                     data["averageTemp"] = $scope.average/$scope.tempList.length;
                     $scope.finalData.unshift(data);
+                })
+                .catch(function (response){
+                    alert("City is not present");
                 });
         }
     }
@@ -46,7 +49,7 @@ weatherApp.controller('weatherController', function ($scope, $http) {
             center: new google.maps.LatLng(lat, lon),
             zoom: 16
         }
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        var map = new google.maps.LatLng(document.getElementById("map"), mapOptions);
     }
 
     $scope.graph = function(tempList) {

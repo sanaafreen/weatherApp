@@ -26,9 +26,10 @@
           <div class="col menu"> <td align="center"><b>City</b></td></div>
           <div class="col menu1" ><td align=center><b>Temprature</b></td></div>
         </div>
+
         <div class="row" ng-repeat="n in finalData">
-          <div id="map" class="col main" ng-bind-html="initMap(n.lat, n.lon)"></div>
-          <div id = "container" class="col main1" ng-bind-html="graph(n.tempList)"></div>
+          <div id="map" class="main" ng-bind-html="initMap(n.lat, n.lon)"></div>
+          <div id = "container" class="main1" ng-bind-html="graph(n.tempList)"></div>
         </div>
       </div>
     </div>
